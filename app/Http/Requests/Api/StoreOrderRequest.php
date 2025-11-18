@@ -22,6 +22,8 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             'user_id' => 'required|integer',
+            'ip' => 'required|ipv4',
+            'version' => 'required|string',
             'items' => 'required|array|min:1|max:50',
             'items.*.product_id' => 'required|integer',
             'items.*.quantity' => 'required|integer|min:1|max:999',
