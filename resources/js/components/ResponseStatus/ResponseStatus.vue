@@ -21,25 +21,6 @@ interface ResponseStatusProps extends PrimitiveProps {
  */
 
 const props = defineProps<ResponseStatusProps>();
-
-const readableTime = computed(() => {
-    const timestamp = new Date(props.timestamp);
-    const timeAgo = useTimeAgo(timestamp);
-
-    return timeAgo.value;
-});
-
-const absoluteTime = computed(() => {
-    const timestamp = new Date(props.timestamp);
-
-    return timestamp.toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-    });
-});
 </script>
 
 <template>
