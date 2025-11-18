@@ -33,7 +33,7 @@ const footerNavItems: NavItem[] = [
     },
     {
         title: 'Documentation',
-        href: 'https://github.com/sunchayn/nimbus/tree/main/wiki/user-guide',
+        href: 'https://github.com/sunchayn/nimbus/tree/base/wiki/user-guide',
         icon: BookOpen,
     },
 ];

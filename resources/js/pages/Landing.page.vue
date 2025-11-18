@@ -155,7 +155,7 @@ export default {
                             </div>
                             <Button
                                 as="a"
-                                href="https://github.com/sunchayn/nimbus/tree/main/wiki/user-guide"
+                                href="https://github.com/sunchayn/nimbus/tree/base/wiki/user-guide"
                                 target="_blank"
                                 variant="link"
                                 size="xs"
@@ -177,7 +177,7 @@ export default {
                             </div>
                             <Button
                                 as="a"
-                                href="https://github.com/sunchayn/nimbus/tree/main/wiki/contribution-guide"
+                                href="https://github.com/sunchayn/nimbus/tree/base/wiki/contribution-guide"
                                 target="_blank"
                                 variant="link"
                                 size="xs"
