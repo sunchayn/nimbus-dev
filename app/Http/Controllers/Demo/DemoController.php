@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Demo;
 
 use App\Http\Controllers\Api\Enums\SomeFilterEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Demo\SpatieData\SpatieDataExample;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Spatie\LaravelData\Resolvers\DataValidationRulesResolver;
+use Spatie\LaravelData\Support\Validation\DataRules;
+use Spatie\LaravelData\Support\Validation\ValidationPath;
 
 class DemoController extends Controller
 {
@@ -185,5 +189,19 @@ class DemoController extends Controller
             ], 200),
             default => response()->json(['message' => 'Success'], 200)
         };
+    }
+
+    public function spatieData(SpatieDataExample $spatieDataExample): JsonResponse
+    {
+        return response()->json([
+            'rules' => app(DataValidationRulesResolver::class)->execute(
+                SpatieDataExample::class,
+                [],
+                ValidationPath::create(),
+                DataRules::create()
+            ),
+            'message' => 'Validation passed',
+            'data' => $spatieDataExample->toArray(),
+        ]);
     }
 }

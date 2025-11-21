@@ -23,6 +23,10 @@ Route::prefix('responses')->group(function () {
     Route::get('/success-responses', [DemoController::class, 'successResponses']);
 });
 
+Route::prefix('spatie-data')->group(function () {
+    Route::get('/', [DemoController::class, 'spatieData']);
+});
+
 Route::prefix('authentication')->group(function () {
     Route::get('/show-logged-in-user', fn (\Illuminate\Http\Request $request) => response()->json([
         'user_id' => $request->user()->id ?? '<not logged in>',
