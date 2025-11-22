@@ -40,3 +40,8 @@ Route::prefix('verbs')->group(function () {
     Route::post('/verbs', [VerbsController::class, 'post']);
     Route::patch('/verbs', [VerbsController::class, 'patch']);
 });
+
+Route::prefix('segments')->group(function () {
+    Route::get('/{segment}', [VerbsController::class, 'get']);
+    Route::post('/example2/{segment}/create', [VerbsController::class, 'post']);
+});
