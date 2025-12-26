@@ -85,7 +85,7 @@ return [
           |
           */
 
-        'apiBaseUrl' => env('NIMBUS_RELAY_ENDPOINT'),
+        'api_base_url' => env('NIMBUS_RELAY_ENDPOINT'),
     ],
 
     /*
