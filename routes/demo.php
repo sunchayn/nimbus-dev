@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Demo\DemoController;
+use App\Http\Controllers\Demo\DieAndDumpController;
 use App\Http\Controllers\Demo\VerbsController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,4 +45,8 @@ Route::prefix('verbs')->group(function () {
 Route::prefix('segments')->group(function () {
     Route::get('/{segment}', [VerbsController::class, 'get']);
     Route::post('/example2/{segment}/create', [VerbsController::class, 'post']);
+});
+
+Route::prefix('dd')->group(function () {
+    Route::get('/', DieAndDumpController::class);
 });
