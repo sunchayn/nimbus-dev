@@ -25,3 +25,7 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+/.env.bak
+/public/vendor/nimbus/hot
+/php_server1.log
+/php_server2.log
