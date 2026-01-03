@@ -204,4 +204,12 @@ class DemoController extends Controller
             'data' => $spatieDataExample->toArray(),
         ]);
     }
+
+    public function requestParameters(Request $request): JsonResponse
+    {
+        return response()->json([
+            'query' => $request->query(),
+            'input' => $request->input(),
+        ]);
+    }
 }

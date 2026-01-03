@@ -50,3 +50,8 @@ Route::prefix('segments')->group(function () {
 Route::prefix('dd')->group(function () {
     Route::get('/', DieAndDumpController::class);
 });
+
+Route::prefix('request-parameters')->group(function () {
+    Route::get('/', [DemoController::class, 'requestParameters']);
+    Route::post('/', [DemoController::class, 'requestParameters']);
+});
