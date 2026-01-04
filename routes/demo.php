@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Demo\DemoController;
-use App\Http\Controllers\Demo\DieAndDumpController;
+use App\Http\Controllers\Demo\DumpAndDieController;
 use App\Http\Controllers\Demo\VerbsController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,7 +48,7 @@ Route::prefix('segments')->group(function () {
 });
 
 Route::prefix('dd')->group(function () {
-    Route::get('/', DieAndDumpController::class);
+    Route::get('/', DumpAndDieController::class);
 });
 
 Route::prefix('request-parameters')->group(function () {

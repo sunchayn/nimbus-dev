@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use stdClass;
 
-class DieAndDumpController extends Controller
+class DumpAndDieController extends Controller
 {
     public function __invoke(Request $request): never
     {
