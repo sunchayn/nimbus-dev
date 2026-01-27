@@ -22,7 +22,6 @@ class ProductController extends Controller
             'page' => 'nullable|integer|min:1',
             'per_page' => 'nullable|integer|min:1|max:100',
             'search' => 'nullable|string|max:255',
-            'category_id' => 'nullable|integer|exists:categories,id',
             'min_price' => 'nullable|numeric|min:0',
             'max_price' => 'nullable|numeric|min:0|gte:min_price',
             'status' => 'nullable|in:active,inactive,discontinued',

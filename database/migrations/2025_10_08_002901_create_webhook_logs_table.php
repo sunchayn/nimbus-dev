@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('webhook_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('webhook_id')->constrained('webhooks')->onDelete('cascade');
+            $table->foreignId('webhook_id');
             $table->string('event_type');
             $table->json('payload');
             $table->enum('status', ['success', 'failed', 'pending'])->default('pending');

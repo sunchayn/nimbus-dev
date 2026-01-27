@@ -8,6 +8,7 @@ use App\Http\Requests\Api\UpdateOrderRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
@@ -173,6 +174,8 @@ class OrderController extends Controller
         $validated = $request->validate([
             'reason' => 'nullable|string|max:500',
         ]);
+
+        DB::table('orders')->where('id', $order)->delete();
 
         return response()->json([
             'message' => 'Order cancelled successfully',

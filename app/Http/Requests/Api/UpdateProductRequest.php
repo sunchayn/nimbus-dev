@@ -26,7 +26,6 @@ class UpdateProductRequest extends FormRequest
             'name' => 'sometimes|string|max:255',
             'description' => 'sometimes|string|max:2000',
             'price' => 'sometimes|numeric|min:0|max:999999.99',
-            'category_id' => 'sometimes|integer|exists:categories,id',
             'status' => ['sometimes', Rule::in(['active', 'inactive', 'discontinued'])],
             'stock_quantity' => 'sometimes|integer|min:0|max:999999',
             'sku' => 'sometimes|string|max:100|unique:products,sku,'.$productId,

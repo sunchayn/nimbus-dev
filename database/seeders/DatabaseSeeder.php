@@ -12,11 +12,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            CategorySeeder::class,
             UserSeeder::class,
             ProductSeeder::class,
             OrderSeeder::class,
-            NotificationTemplateSeeder::class,
             WebhookSeeder::class,
             ProductReviewSeeder::class,
             UserProfileSeeder::class,
@@ -24,8 +22,6 @@ class DatabaseSeeder extends Seeder
             UserPreferenceSeeder::class,
             UserTagSeeder::class,
             ProductImageSeeder::class,
-            NotificationSeeder::class,
-            FileSeeder::class,
         ]);
     }
 }

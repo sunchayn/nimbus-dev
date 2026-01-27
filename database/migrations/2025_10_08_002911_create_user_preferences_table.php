@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_preferences', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id');
             $table->boolean('notifications')->default(true);
             $table->enum('theme', ['light', 'dark', 'auto'])->default('auto');
             $table->enum('language', ['en', 'es', 'fr', 'de', 'it'])->default('en');
