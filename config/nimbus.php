@@ -1,5 +1,7 @@
 <?php
 
+use Sunchayn\Nimbus\Modules\Config\Enums\RoutesProcessingStrategyEnum;
+
 return [
     'prefix' => 'demo',
     'default_application' => 'main',
@@ -9,6 +11,7 @@ return [
         'main' => [
             'name' => 'Demo API',
             'routes' => [
+                'strategy' => RoutesProcessingStrategyEnum::AutoDetect,
                 'prefix' => '_demo',
                 'versioned' => true,
                 'api_base_url' => env('NIMBUS_RELAY_ENDPOINT'),
@@ -27,9 +30,16 @@ return [
         'internal' => [
             'name' => 'Internal API',
             'routes' => [
+                'strategy' => RoutesProcessingStrategyEnum::OpenAPI,
                 'prefix' => 'api',
-                'versioned' => true,
+                'versioned' => false,
                 'api_base_url' => env('NIMBUS_RELAY_ENDPOINT'),
+                'openapi' => [
+                    'files' => [
+                        'default' => base_path('openapi.yaml'),
+                    ],
+                    'show_operation_id' => true,
+                ],
             ],
             'auth' => [
                 'guard' => 'web',

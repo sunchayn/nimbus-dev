@@ -1,0 +1,374 @@
+openapi: 3.1.0
+info:
+  title: Nimbus Dev API
+  description: API specification for testing OpenAPI route integration
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Development server
+
+paths:
+  # Real routes that exist in the application
+  /api/products:
+    get:
+      summary: List all products
+      operationId: listProducts
+      tags:
+        - Products
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+    
+    post:
+      summary: Create a new product
+      operationId: createProduct
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - price
+              properties:
+                name:
+                  type: string
+                  minLength: 3
+                  maxLength: 255
+                description:
+                  type: string
+                  maxLength: 1000
+                price:
+                  type: number
+                  minimum: 0
+                stock:
+                  type: integer
+                  minimum: 0
+      responses:
+        '201':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+  /api/products/{product}:
+    get:
+      summary: Get a specific product
+      operationId: getProduct
+      tags:
+        - Products
+      parameters:
+        - name: product
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    
+    put:
+      summary: Update a product
+      operationId: updateProduct
+      tags:
+        - Products
+      parameters:
+        - name: product
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 3
+                  maxLength: 255
+                description:
+                  type: string
+                  maxLength: 1000
+                price:
+                  type: number
+                  minimum: 0
+                stock:
+                  type: integer
+                  minimum: 0
+      responses:
+        '200':
+          description: Product updated
+
+  /api/orders:
+    get:
+      summary: List all orders
+      operationId: listOrders
+      tags:
+        - Orders
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+    
+    post:
+      summary: Create a new order
+      operationId: createOrder
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - customer_name
+                - items
+              properties:
+                customer_name:
+                  type: string
+                  minLength: 2
+                  maxLength: 255
+                customer_email:
+                  type: string
+                  format: email
+                items:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: object
+                    required:
+                      - product_id
+                      - quantity
+                    properties:
+                      product_id:
+                        type: integer
+                      quantity:
+                        type: integer
+                        minimum: 1
+      responses:
+        '201':
+          description: Order created
+
+  # Fake routes that DON'T exist in the application
+  /api/customers:
+    get:
+      summary: List all customers
+      operationId: listCustomers
+      tags:
+        - Customers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    
+    post:
+      summary: Create a new customer
+      operationId: createCustomer
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+              properties:
+                name:
+                  type: string
+                  minLength: 2
+                  maxLength: 255
+                email:
+                  type: string
+                  format: email
+                phone:
+                  type: string
+                  pattern: '^\+?[1-9]\d{1,14}$'
+      responses:
+        '201':
+          description: Customer created
+
+  /api/customers/{customer}:
+    get:
+      summary: Get customer details
+      operationId: getCustomer
+      tags:
+        - Customers
+      parameters:
+        - name: customer
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+
+  /api/invoices:
+    get:
+      summary: List all invoices
+      operationId: listInvoices
+      tags:
+        - Invoices
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+    
+    post:
+      summary: Create a new invoice
+      operationId: createInvoice
+      tags:
+        - Invoices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - order_id
+                - amount
+              properties:
+                order_id:
+                  type: integer
+                amount:
+                  type: number
+                  minimum: 0
+                due_date:
+                  type: string
+                  format: date
+      responses:
+        '201':
+          description: Invoice created
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        stock:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_name:
+          type: string
+        customer_email:
+          type: string
+        status:
+          type: string
+          enum: [pending, processing, completed, cancelled]
+        total:
+          type: number
+        created_at:
+          type: string
+          format: date-time
+    
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: integer
+        order_id:
+          type: integer
+        amount:
+          type: number
+        due_date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum: [pending, paid, overdue]
+        created_at:
+          type: string
+          format: date-time
