@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7dd51d58a10f89801b250d2ffbac72d9",
+    "content-hash": "6188b7df313d32c477d90bd0a8efe671",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4487,11 +4487,17 @@
         },
         {
             "name": "sunchayn/nimbus",
-            "version": "dev-base",
+            "version": "v0.4.0-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sunchayn/nimbus.git",
+                "reference": "23af80288e92b5dfea9666c07a5b5b13117d3403"
+            },
             "dist": {
-                "type": "path",
-                "url": "../nimbus",
-                "reference": "aa99eacd2cbd71b1e96fd2ca5bf340e513cb6419"
+                "type": "zip",
+                "url": "https://api.github.com/repos/sunchayn/nimbus/zipball/23af80288e92b5dfea9666c07a5b5b13117d3403",
+                "reference": "23af80288e92b5dfea9666c07a5b5b13117d3403",
+                "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.8",
@@ -4531,49 +4537,7 @@
                     "Sunchayn\\Nimbus\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Sunchayn\\Nimbus\\Tests\\": "tests/",
-                    "Sunchayn\\Nimbus\\Tests\\App\\": "tests/App/",
-                    "Sunchayn\\Nimbus\\Tests\\Integration\\": "tests/Integration/",
-                    "Sunchayn\\Nimbus\\Tests\\E2E\\": "tests/E2E/"
-                }
-            },
-            "scripts": {
-                "phpstan": [
-                    "vendor/bin/phpstan analyse -c ./tools/phpstan/phpstan.neon.dist --memory-limit 2G"
-                ],
-                "test": [
-                    "vendor/bin/phpunit -c tests/phpunit.xml.dist --testdox --colors=always"
-                ],
-                "test:parallel": [
-                    "vendor/bin/paratest -c tests/phpunit.xml.dist"
-                ],
-                "test:coverage": [
-                    "@test:parallel --coverage-html ./build/coverage"
-                ],
-                "test:coverage-ci": [
-                    "@test:parallel --coverage-clover ./build/coverage.xml"
-                ],
-                "style:fix": [
-                    "vendor/bin/pint"
-                ],
-                "rector": [
-                    "vendor/bin/rector -c ./tools/rector/config.php"
-                ],
-                "switch": [
-                    "composer update orchestra/testbench:$TESTBENCH_VERSION phpunit/phpunit brianium/paratest larastan/larastan phpstan/extension-installer phpstan/phpstan-deprecation-rules -W"
-                ],
-                "switch:l10": [
-                    "TESTBENCH_VERSION=^8.0 composer run-script switch"
-                ],
-                "switch:l11": [
-                    "TESTBENCH_VERSION=^9.8 composer run-script switch"
-                ],
-                "switch:l12": [
-                    "TESTBENCH_VERSION=^10.6 composer run-script switch"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4587,16 +4551,24 @@
             "description": "A Laravel package providing an in-browser API client with automatic schema generation, live validation, and built-in authentication with a touch of Laravel-tailored magic for effortless API testing.",
             "homepage": "https://github.com/sunchayn/nimbus",
             "keywords": [
-                "API client",
-                "API testing",
-                "HTTP client",
-                "JSON schema",
+                "JSON Schema",
+                "api client",
+                "api testing",
+                "http client",
                 "laravel",
                 "schema generation"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/sunchayn/nimbus/issues",
+                "source": "https://github.com/sunchayn/nimbus/tree/v0.4.0-alpha"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sunchayn",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-01-31T15:26:06+00:00"
         },
         {
             "name": "symfony/clock",
@@ -7860,7 +7832,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "sunchayn/nimbus": 20
+        "sunchayn/nimbus": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
