@@ -71,11 +71,11 @@ class DumpAndDieController extends Controller
             },
 
             // App Object
-            function () use ($request) {
-                return [
-                    app(),
-                ];
-            },
+//            function () use ($request) {
+//                return [
+//                    app(),
+//                ];
+//            },
 
             // Product run-time object
             function () {
