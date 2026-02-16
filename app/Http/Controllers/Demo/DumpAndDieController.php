@@ -71,11 +71,7 @@ class DumpAndDieController extends Controller
             },
 
             // App Object
-//            function () use ($request) {
-//                return [
-//                    app(),
-//                ];
-//            },
+            app()->runningUnitTests() ? fn () => [app()] : null,
 
             // Product run-time object
             function () {
@@ -130,6 +126,8 @@ class DumpAndDieController extends Controller
                 ];
             },
         ];
+
+        $dumps = array_values(array_filter($dumps));
 
         if ($index !== null && $index >= 0 && $index <= 5) {
             dd(...$dumps[$index]->call($this));

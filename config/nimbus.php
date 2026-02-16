@@ -5,7 +5,7 @@ use Sunchayn\Nimbus\Modules\Config\Enums\RoutesProcessingStrategyEnum;
 return [
     'prefix' => 'demo',
     'default_application' => 'main',
-    'allowed_envs' => ['local', 'staging', 'production'],
+    'allowed_envs' => ['testing', 'local', 'staging', 'production'],
 
     'applications' => [
         'main' => [
