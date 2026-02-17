@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6188b7df313d32c477d90bd0a8efe671",
+    "content-hash": "2e39b78534fa975ceb154fa18a3f8492",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4487,16 +4487,16 @@
         },
         {
             "name": "sunchayn/nimbus",
-            "version": "v0.4.0-alpha",
+            "version": "v0.5.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sunchayn/nimbus.git",
-                "reference": "23af80288e92b5dfea9666c07a5b5b13117d3403"
+                "reference": "5faf6b097c86338cb5fd8f3e94bdd17355a0e0dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sunchayn/nimbus/zipball/23af80288e92b5dfea9666c07a5b5b13117d3403",
-                "reference": "23af80288e92b5dfea9666c07a5b5b13117d3403",
+                "url": "https://api.github.com/repos/sunchayn/nimbus/zipball/5faf6b097c86338cb5fd8f3e94bdd17355a0e0dc",
+                "reference": "5faf6b097c86338cb5fd8f3e94bdd17355a0e0dc",
                 "shasum": ""
             },
             "require": {
@@ -4560,7 +4560,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sunchayn/nimbus/issues",
-                "source": "https://github.com/sunchayn/nimbus/tree/v0.4.0-alpha"
+                "source": "https://github.com/sunchayn/nimbus/tree/v0.5.0-alpha"
             },
             "funding": [
                 {
@@ -4568,7 +4568,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-01-31T15:26:06+00:00"
+            "time": "2026-02-17T00:17:52+00:00"
         },
         {
             "name": "symfony/clock",
