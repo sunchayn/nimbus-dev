@@ -22,6 +22,12 @@ Route::prefix('responses')->group(function () {
     Route::get('/error-responses', [DemoController::class, 'errorResponses']);
 
     Route::get('/success-responses', [DemoController::class, 'successResponses']);
+
+    Route::get('/json-resource', [\App\Http\Controllers\Demo\ResponseDemoController::class, 'jsonResource']);
+    Route::get('/nested-json', [\App\Http\Controllers\Demo\ResponseDemoController::class, 'nestedJson']);
+    Route::get('/spatie-data', [\App\Http\Controllers\Demo\ResponseDemoController::class, 'spatieData']);
+    Route::get('/inline-json', [\App\Http\Controllers\Demo\ResponseDemoController::class, 'inlineJson']);
+    Route::get('/raw-payload', [\App\Http\Controllers\Demo\ResponseDemoController::class, 'rawPayload'])->name('raw-payload');
 });
 
 Route::prefix('spatie-data')->group(function () {
@@ -33,7 +39,7 @@ Route::prefix('authentication')->group(function () {
         'user_id' => $request->user()->id ?? '<not logged in>',
         'user_agent' => $request->userAgent(),
         'login_url' => config('app.url').'/login',
-    ]));
+    ])->withCookie('secret', 'value'));
 });
 
 Route::prefix('verbs')->group(function () {
