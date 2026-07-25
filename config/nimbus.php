@@ -1,7 +1,5 @@
 <?php
 
-use Sunchayn\Nimbus\Modules\Config\Enums\RoutesProcessingStrategyEnum;
-
 return [
     'prefix' => 'demo',
     'default_application' => 'main',
@@ -11,7 +9,7 @@ return [
         'main' => [
             'name' => 'Demo API',
             'routes' => [
-                'strategy' => RoutesProcessingStrategyEnum::AutoDetect,
+                'strategy' => 'auto_detect',
                 'prefix' => '_demo',
                 'versioned' => true,
                 'api_base_url' => env('NIMBUS_RELAY_ENDPOINT'),
@@ -19,18 +17,18 @@ return [
             'auth' => [
                 'guard' => 'web',
                 'special' => [
-                    'injector' => \Sunchayn\Nimbus\Modules\Relay\Authorization\Injectors\RememberMeCookieInjector::class,
+                    'injector' => 'remember_me_cookie',
                 ],
             ],
             'headers' => [
-                'x-request-id' => \Sunchayn\Nimbus\Modules\Config\GlobalHeaderGeneratorTypeEnum::Uuid,
-                'x-session-id' => \Sunchayn\Nimbus\Modules\Config\GlobalHeaderGeneratorTypeEnum::Uuid,
+                'x-request-id' => '$uuid',
+                'x-session-id' => '$uuid',
             ],
         ],
         'internal' => [
             'name' => 'Internal API',
             'routes' => [
-                'strategy' => RoutesProcessingStrategyEnum::OpenAPI,
+                'strategy' => 'openapi',
                 'prefix' => 'api',
                 'versioned' => false,
                 'api_base_url' => env('NIMBUS_RELAY_ENDPOINT'),
@@ -44,7 +42,7 @@ return [
             'auth' => [
                 'guard' => 'web',
                 'special' => [
-                    'injector' => \Sunchayn\Nimbus\Modules\Relay\Authorization\Injectors\RememberMeCookieInjector::class,
+                    'injector' => 'remember_me_cookie',
                 ],
             ],
             'headers' => [
