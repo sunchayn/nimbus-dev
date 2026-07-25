@@ -101,6 +101,29 @@ class DemoController extends Controller
     }
 
     /**
+     * Validator facade and dynamic method call validation demonstration.
+     */
+    public function validatorMakeValidation(Request $request): JsonResponse
+    {
+        $validated = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'current_password' => ['required', 'string', 'current_password:web'],
+            'password' => $this->passwordRules(),
+        ], [
+            'current_password.current_password' => 'The provided password does not match your current password.',
+        ])->validateWithBag('updatePassword');
+
+        return response()->json([
+            'message' => 'Password updated successfully',
+            'data' => $validated,
+        ]);
+    }
+
+    protected function passwordRules(): array
+    {
+        return ['required', 'string', 'min:8'];
+    }
+
+    /**
      * Different error response types demonstration.
      */
     public function errorResponses(Request $request): JsonResponse

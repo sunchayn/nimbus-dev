@@ -10,6 +10,7 @@ Route::prefix('inline-validation')->group(function () {
     Route::post('/complex', [DemoController::class, 'complexValidation']);
     Route::post('/conditional', [DemoController::class, 'conditionalValidation']);
     Route::post('/enum', [DemoController::class, 'enumValidation']);
+    Route::post('/validator-make', [DemoController::class, 'validatorMakeValidation']);
 });
 
 Route::prefix('shapes')->group(function () {
